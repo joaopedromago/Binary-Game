@@ -1,5 +1,7 @@
 # Adivinhação
 
+![Genio](/src/genio1.jpg "Adivinhe!")
+
 O jogo consiste em:
 > Uma `pessoa A` pensa em um número entre 1 e 300
 > outra `pessoa B` deve descobrir este número dentro de **9 tentativas**
