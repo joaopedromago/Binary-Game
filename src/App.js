@@ -72,14 +72,12 @@ const App = () => {
           <>
             <img src={genio} className="App-logo" alt="logo" />
             <p>{currentMessage}</p>
-            <a
-              className="App-link"
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
+              className="App-button"
               onClick={startGame}
             >
               Começar
-            </a>
+            </button>
           </>
         )}
         {screen === SCREENS.game && (
@@ -93,28 +91,24 @@ const App = () => {
               value={inputValue}
               onChange={(event) => setInputValue(event.target.value)}
             />
-            <a
-              className="App-link"
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
+              className="App-button"
               onClick={tentativa}
             >
               Tentar
-            </a>
+            </button>
           </>
         )}
         {screen === SCREENS.message && (
           <>
             <img src={number === parseInt(inputValue) ? genioSucesso : genioErro} className="App-logo" alt="logo" />
             <p>{currentMessage}</p>
-            <a
-              className="App-link"
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
+              className="App-button"
               onClick={goBack}
             >
               Voltar
-            </a>
+            </button>
           </>
         )}
       </header>

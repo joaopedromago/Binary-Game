@@ -28,6 +28,17 @@
   text-align: center;
 }
 
+.App-button {
+  font-size: 32px;
+  text-align: center;
+  cursor: pointer;
+  background-color: #4444bb;
+  color: #ffffff;
+  border-radius: 8px;
+  padding: 1rem;
+  border: none;
+  margin-top: 1rem;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
