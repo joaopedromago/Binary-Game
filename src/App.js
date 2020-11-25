@@ -82,7 +82,6 @@ const App = () => {
         )}
         {screen === SCREENS.game && (
           <form onSubmit={tentativa}>
-            >
             <img src={genioPergunta} className="App-logo" alt="logo" />
             <p>{currentMessage}</p>
             <p>{extraInfo}</p>
