@@ -27,7 +27,7 @@ const MAXTRIES = 8
 const App = () => {
   const [screen, setScreen] = useState('start')
   const [currentMessage, setCurrentMessage] = useState(MESSAGES.start)
-  const [extraInfo, setExtraInfo] = useState("")
+  const [extraInfo, setExtraInfo] = useState('')
   const [tries, setTries] = useState(MAXTRIES)
   const [number, setNumber] = useState(0)
   const [inputValue, setInputValue] = useState('')
@@ -37,22 +37,25 @@ const App = () => {
     setTries(MAXTRIES)
     setNumber(Math.round(Math.random() * 300))
     setCurrentMessage(MESSAGES.firstQuestion)
-    setExtraInfo("")
+    setExtraInfo('')
   }
 
-  const tentativa = () => {
+  const tentativa = (event) => {
+    if(event) {
+      event.preventDefault();
+    }
     if (number === parseInt(inputValue)) {
       setCurrentMessage(MESSAGES.success.replace('{correctNumber}', number))
       setScreen(SCREENS.message)
     } else {
       setTries(tries - 1)
       if (tries > 0) {
-        if(number > inputValue) {
+        if (number > inputValue) {
           setExtraInfo(`O meu número é maior que ${inputValue}`)
         } else {
           setExtraInfo(`O meu número é menor que ${inputValue}`)
         }
-        setCurrentMessage(MESSAGES.wrongAnswer.replace("{triesNumber}", tries))
+        setCurrentMessage(MESSAGES.wrongAnswer.replace('{triesNumber}', tries))
       } else {
         setCurrentMessage(MESSAGES.bad.replace('{correctNumber}', number))
         setScreen(SCREENS.message)
@@ -72,16 +75,14 @@ const App = () => {
           <>
             <img src={genio} className="App-logo" alt="logo" />
             <p>{currentMessage}</p>
-            <button
-              className="App-button"
-              onClick={startGame}
-            >
+            <button className="App-button" onClick={startGame}>
               Começar
             </button>
           </>
         )}
         {screen === SCREENS.game && (
-          <>
+          <form onSubmit={tentativa}>
+            >
             <img src={genioPergunta} className="App-logo" alt="logo" />
             <p>{currentMessage}</p>
             <p>{extraInfo}</p>
@@ -91,22 +92,20 @@ const App = () => {
               value={inputValue}
               onChange={(event) => setInputValue(event.target.value)}
             />
-            <button
-              className="App-button"
-              onClick={tentativa}
-            >
+            <button type="submit" className="App-button">
               Tentar
             </button>
-          </>
+          </form>
         )}
         {screen === SCREENS.message && (
           <>
-            <img src={number === parseInt(inputValue) ? genioSucesso : genioErro} className="App-logo" alt="logo" />
+            <img
+              src={number === parseInt(inputValue) ? genioSucesso : genioErro}
+              className="App-logo"
+              alt="logo"
+            />
             <p>{currentMessage}</p>
-            <button
-              className="App-button"
-              onClick={goBack}
-            >
+            <button className="App-button" onClick={goBack}>
               Voltar
             </button>
           </>
